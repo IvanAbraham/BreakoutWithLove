@@ -20,12 +20,14 @@ end
 
 function Game.update(dt)
     Pallet.update(dt)
-    Ball.update(dt)
+    Ball.update(dt, Pallet)
 end
 
 function Game.draw()
     
     Pallet.draw()
+    Ball.draw()
+
 end
 
 return Game

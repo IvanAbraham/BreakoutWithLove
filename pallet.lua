@@ -20,7 +20,7 @@ function Pallet.update(dt)
         Pallet.x = Pallet.x + Pallet.speed * dt
     end
     
-    if love.keyboard.isDown("Space") then
+    if love.keyboard.isDown("space") then
         Pallet.iddleBall = true
     end
 
@@ -33,8 +33,8 @@ function Pallet.update(dt)
 end
 
 function Pallet.draw()
-    love.graphics.setColor(1, 1, 1)  -- color blanco
-    love.graphics.rectangle("fill", Pallet.x, Pallet.y, Pallet.width, Pallet.height)
+    love.graphics.setColor(1, 1, 1) 
+    love.graphics.rectangle("line", Pallet.x, Pallet.y, Pallet.width, Pallet.height)
 end
 
 return Pallet
