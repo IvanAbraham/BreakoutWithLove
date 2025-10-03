@@ -1,7 +1,7 @@
 local Pallet = {}
 
 function Pallet.initialize(screenWidth, screenHeight)
-    Pallet.iddleBall = true
+    Pallet.idleBall = true
     Pallet.x = screenWidth / 2 - (screenWidth / 6) / 2  
     Pallet.y = screenHeight - 30  
     Pallet.width = screenWidth / 8
@@ -21,7 +21,7 @@ function Pallet.update(dt)
     end
     
     if love.keyboard.isDown("space") then
-        Pallet.iddleBall = false
+        Pallet.idleBall = false
     end
 
     if Pallet.x <= 0 then
