@@ -39,12 +39,12 @@ function Ball.collision(screenWidth, screenHeight, pallet)
         if  Ball.y + Ball.radius >= pallet.y and Ball.y - Ball.radius <= pallet.y and   
             Ball.x >= pallet.x and Ball.x <= pallet.x + pallet.width then
             
-                --Black magic that calculates the position of the ball when colliding
+                --Calculate the angle and position in which the ball colides against the pallet
                 local hitPos = (Ball.x - (pallet.x + pallet.width / 2)) / (pallet.width / 2)
                 local bounceAngle = -math.pi/2 + hitPos * (math.pi/3)
                 
-                local palletFactor = pallet.speed or 0
-                Ball.xSpeed = math.cos(bounceAngle) * Ball.speed + palletFactor 
+                --The ball bounces taking into account the position of the pallet in which it collides 
+                Ball.xSpeed = math.cos(bounceAngle) * Ball.speed
                 Ball.ySpeed = math.sin(bounceAngle) * Ball.speed 
                 Ball.y = pallet.y - Ball.radius
                 NormalizeSpeed()
