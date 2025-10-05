@@ -1,9 +1,7 @@
 local Game = require("game")
 
 function love.load()
-        
    Game.initialize()
-
 end
 
 function love.update(dt)

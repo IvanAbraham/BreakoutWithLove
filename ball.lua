@@ -1,22 +1,22 @@
 local Ball = {}
 
-function Ball.initialize(screenWidth, pallet)
-        Ball.radius = screenWidth/80
-        Ball.speed = 500
-        Ball.x = pallet.x + (pallet.width / 2)
-        Ball.y = pallet.y - Ball.radius - 5
-        Ball.ySpeed = -Ball.speed
-        Ball.xSpeed = 0
+function Ball.initialize(pallet, screenWidth, screenHeight)
+    Ball.radius = screenWidth/80
+    Ball.speed = 500
+    Ball.x = pallet.x + (pallet.width / 2)
+    Ball.y = pallet.y - Ball.radius - 5
+    Ball.ySpeed = -Ball.speed
+    Ball.xSpeed = 0
 end
 
 function Ball.update(dt, pallet)
 
     if  pallet.idleBall == false then
-         Ball.x = Ball.x + Ball.xSpeed * dt
-         Ball.y = Ball.y + Ball.ySpeed * dt
+        Ball.x = Ball.x + Ball.xSpeed * dt
+        Ball.y = Ball.y + Ball.ySpeed * dt
     elseif pallet.idleBall == true then
-         Ball.x = pallet.x + (pallet.width / 2)
-         Ball.y = pallet.y - Ball.radius - 5
+        Ball.x = pallet.x + (pallet.width / 2)
+        Ball.y = pallet.y - Ball.radius - 5
     end
 
 end
@@ -24,6 +24,7 @@ end
 function Ball.collision(screenWidth, screenHeight, pallet)
     if pallet.idleBall == false then
 
+        --NormalizeSpeed, as its name might reveal, is used to normalize the horizontal and vertical speed, making it so the ball always keeps the same speed
         local function NormalizeSpeed()
             
             local currentSpeed = math.sqrt(Ball.xSpeed^2 + Ball.ySpeed^2)
