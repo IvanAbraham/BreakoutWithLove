@@ -22,6 +22,8 @@ function Ball.update(dt, pallet)
 end
 
 function Ball.collision(screenWidth, screenHeight, pallet)
+   
+    --Verify if the ball was launched before aplying collision logic
     if pallet.idleBall == false then
 
         --NormalizeSpeed, as its name might reveal, is used to normalize the horizontal and vertical speed, making it so the ball always keeps the same speed
@@ -38,17 +40,17 @@ function Ball.collision(screenWidth, screenHeight, pallet)
 
         --Ball colision against pallet
         if  Ball.y + Ball.radius >= pallet.y and Ball.y - Ball.radius <= pallet.y and   
-            Ball.x >= pallet.x and Ball.x <= pallet.x + pallet.width then
+            Ball.x + Ball.radius >= pallet.x and Ball.x - Ball.radius <= pallet.x + pallet.width then
             
-                --Calculate the angle and position in which the ball colides against the pallet
-                local hitPos = (Ball.x - (pallet.x + pallet.width / 2)) / (pallet.width / 2)
-                local bounceAngle = -math.pi/2 + hitPos * (math.pi/3)
+            --Calculate the angle and position in which the ball colides against the pallet
+            local hitPos = (Ball.x - (pallet.x + pallet.width / 2)) / (pallet.width / 2)
+            local bounceAngle = -math.pi/2 + hitPos * (math.pi/3)
                 
-                --The ball bounces taking into account the position of the pallet in which it collides 
-                Ball.xSpeed = math.cos(bounceAngle) * Ball.speed
-                Ball.ySpeed = math.sin(bounceAngle) * Ball.speed 
-                Ball.y = pallet.y - Ball.radius
-                NormalizeSpeed()
+            --The ball bounces taking into account the position of the pallet in which it collides 
+            Ball.xSpeed = math.cos(bounceAngle) * Ball.speed
+            Ball.ySpeed = math.sin(bounceAngle) * Ball.speed 
+            Ball.y = pallet.y - Ball.radius
+            NormalizeSpeed()
                
         end
         
