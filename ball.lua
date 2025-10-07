@@ -2,7 +2,7 @@ local Ball = {}
 
 function Ball.initialize(pallet, screenWidth, screenHeight)
     Ball.radius = screenWidth/80
-    Ball.speed = 500
+    Ball.speed = 450
     Ball.x = pallet.x + (pallet.width / 2)
     Ball.y = pallet.y - Ball.radius - 5
     Ball.ySpeed = -Ball.speed
@@ -71,6 +71,12 @@ function Ball.collision(screenWidth, screenHeight, pallet)
             Ball.ySpeed = Ball.ySpeed * -1
             NormalizeSpeed()
         end
+
+        if Ball.y - Ball.radius >= screenHeight then
+            pallet.idleBall = true
+            pallet.x = screenWidth / 2 - pallet.width
+        end
+
     end
 
 end

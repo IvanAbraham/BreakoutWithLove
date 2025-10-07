@@ -6,12 +6,12 @@ function Pallet.initialize(screenWidth, screenHeight)
     Pallet.y = screenHeight - 30  
     Pallet.width = screenWidth / 8
     Pallet.height = screenHeight / 35
-    Pallet.speed = 400  
+    Pallet.speed = 500  
     Pallet.screenWidth = screenWidth  
 end
 
 function Pallet.update(dt)
-    
+
     if love.keyboard.isDown("left", "a") then
         Pallet.x = Pallet.x - Pallet.speed * dt
     end
