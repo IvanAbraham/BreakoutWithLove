@@ -15,17 +15,32 @@ function Block.CreateBlock(x, y, screenWidth, screenHeight)
 
 end
 
-function CreateLevel(screenWidth, screenHeight)
+function Block.CreateLevel(blocksTable, screenWidth, screenHeight)
 
-    Block.CreateBlock(screenWidth / 2, 30, screenHeight, screenWidth)
+    local rows = 5
+    local columns = 6
+    local voidSpace = 10
+    local topSpace = 50
+    local blockWidth = (screenWidth - (voidSpace * (columns + 1))) / columns
+    local blockHeight = screenHeight / 25
 
+    for x = 1, rows do
+        for y = 1, columns do
+
+            local xPos = voidSpace + (y - 1) * (blockWidth + voidSpace)
+            local yPos = topSpace + (x - 1) * (blockHeight + voidSpace)
+
+            local block = Block.CreateBlock(xPos, yPos, screenWidth, screenHeight)
+            table.insert(blocksTable, block)
+        end
+    end
 end
 
 function Block.collision(ball, block)
 
     if block.currentHealth <= 0 then
     
-        return
+        return 0 
     
     end
 
@@ -38,11 +53,32 @@ function Block.collision(ball, block)
             
             ball.xSpeed = ball.xSpeed * -1 
 
+            if ball.x <= block.x then
+                
+                ball.x = block.x - ball.radius
+            
+            elseif ball.x >= block.x + block.width then 
+
+                ball.x = block.x + block.width + ball.radius
+
+            end
+
         end
 
         if ball.y > block.y or ball.y > block.y + block.height then
 
             ball.ySpeed = ball.ySpeed * -1    
+
+            if ball.y <= block.y then
+
+                ball.y = block.y - ball.radius
+            
+            elseif ball.y >= block.y + block.height then
+
+                ball.y = block.y + block.height + ball.radius
+                
+            end
+
         
         end 
 

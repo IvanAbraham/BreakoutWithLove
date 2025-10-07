@@ -6,7 +6,7 @@ function Pallet.initialize(screenWidth, screenHeight)
     Pallet.y = screenHeight - 30  
     Pallet.width = screenWidth / 8
     Pallet.height = screenHeight / 35
-    Pallet.speed = 350  
+    Pallet.speed = 400  
     Pallet.screenWidth = screenWidth  
 end
 
