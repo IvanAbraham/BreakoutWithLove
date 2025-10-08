@@ -11,7 +11,7 @@ function Game.initialize()
     Game.playingGame = true
     Game.wonGame = false
     Game.blocks = {}
-    
+
     love.window.setMode(Game.screenWidth, Game.screenHeight, {resizable = false, vsync = false})
 
     Pallet.initialize(Game.screenWidth, Game.screenHeight)

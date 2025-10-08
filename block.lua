@@ -62,7 +62,7 @@ function Block.collision(ball, block)
                 ball.x = block.x + block.width + ball.radius
 
             end
-
+            
         end
 
         if ball.y > block.y or ball.y > block.y + block.height then
@@ -81,6 +81,8 @@ function Block.collision(ball, block)
 
         
         end 
+
+        sounds.blockBounce:play()
 
     end
 end
